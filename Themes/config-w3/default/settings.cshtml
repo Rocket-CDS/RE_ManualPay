@@ -1,0 +1,62 @@
+@inherits DNNrocketAPI.render.DNNrocketTokens<Simplisity.SimplisityRazor>
+@using System.Linq
+@using Simplisity;
+@using DNNrocketAPI.Componants;
+@using RocketEcommerce.RE_ManualPay;
+
+@{
+    var info = (SimplisityInfo)Model.List.First();
+    var engineurl = PortalUtils.GetPortalAlias(DNNrocketUtils.GetCurrentCulture(), PortalUtils.GetPortalId());
+    var payData = new PayData(PortalUtils.SiteGuid());
+}
+
+
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocket/API/App_LocalResources/")
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketEcommerce/App_LocalResources/")
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RE_ManualPay/App_LocalResources/")
+
+
+    <div class="w3-row w3-padding">
+        <div class="w3-col m2 rocket-buttonbar w3-button w3-khaki " onclick="window.location.reload(false);">@ButtonText(ButtonTypes.back)</div>
+        <div class="w3-col m2 rocket-buttonbar w3-button w3-green simplisity_click " s-cmd="manualpay_save" s-post="#datasave" s-fields=''>@ButtonText(ButtonTypes.save)</div>
+        @if (Model.GetSettingBool("saved"))
+        {
+            <i class='fas fa-save w3-right simplisity_fadeout' style="font-size:24px"></i>
+        }
+    </div>
+
+<div id="datasave" class="w3-margin-top">
+
+    <div class="w3-container ">
+        <h2><i class="fab fa-money fa-x3"></i>&nbsp;@ResourceKey("provider.settings")</h2>
+    </div>
+
+    <div class="w3-container">
+        <label>Assembly</label>
+        @TextBox(info, "genxml/textbox/assembly", "class='w3-input w3-border'  autocomplete='off' disabled ", "RE_ManualPay")
+        <label>Namespace + Class</label>
+        @TextBox(info, "genxml/textbox/namespaceclass", "class='w3-input w3-border'  autocomplete='off' disabled ", "RocketEcommerce.RE_ManualPay.BankInterface")
+    </div>
+
+    <div class="w3-container">
+
+        <div class="w3-row">
+            <div class="w3-twothird">
+                <label>@ResourceKey("provider.returnurl")</label>
+                @TextBox(info, "genxml/textbox/returnurl", "class='w3-input w3-border'  autocomplete='off'  ")
+            </div>
+            <div class="w3-third w3-padding">
+                @ResourceKey("provider.returnurl", "", "Help")
+            </div>
+        </div>
+
+        <hr />
+
+        <label>@ResourceKey("provider.debugmode")</label>
+        @CheckBox(info, "genxml/checkbox/debugmode", "", "class='w3-check'")
+
+        <label>@ResourceKey("DNNrocket.active")</label>
+        @CheckBox(info, "genxml/checkbox/active", "", "class='w3-check'")
+
+    </div>
+</div>

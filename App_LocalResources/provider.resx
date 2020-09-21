@@ -138,4 +138,10 @@
   <data name="manualpay.Help" xml:space="preserve">
     <value>The Manual Pay provider deals with internal payment methods, which are not linked to the e-commerce system.  Like money and cheques.  The payments made with this provider are automatically accepted without any validation, it is the shop owner that needs to process the payment.</value>
   </data>
+  <data name="returncommand.Help" xml:space="preserve">
+    <value>This is the server command that will be ran when the client returns to the website.  It wil be placed in the return URL as a parameter of "cmd".</value>
+  </data>
+  <data name="returncommand.Text" xml:space="preserve">
+    <value>Return Command</value>
+  </data>
 </root>

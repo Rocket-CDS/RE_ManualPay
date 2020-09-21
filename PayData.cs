@@ -46,6 +46,11 @@ namespace RocketEcommerce.RE_ManualPay
             get { return Info.GetXmlProperty("genxml/textbox/returnurl"); }
             set { Info.SetXmlProperty("genxml/textbox/returnurl", value); }
         }
+        public string ReturnCommand
+        {
+            get { return Info.GetXmlProperty("genxml/textbox/returncommand"); }
+            set { Info.SetXmlProperty("genxml/textbox/returncommand", value); }
+        }
         public bool DebugMode
         {
             get { return Info.GetXmlPropertyBool("genxml/checkbox/debugmode"); }
@@ -56,6 +61,8 @@ namespace RocketEcommerce.RE_ManualPay
             get { return Info.GetXmlPropertyBool("genxml/checkbox/active"); }
             set { Info.SetXmlProperty("genxml/checkbox/active", value.ToString()); }
         }
+
+
         public PortalShopLimpet PortalShop { get; set; }
         public SimplisityInfo Info { get; set; }
 

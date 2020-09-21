@@ -21,7 +21,8 @@ namespace RocketEcommerce.RE_ManualPay
             {
                 var rPost = new RemotePost();
                 var payData = new PayData(PortalUtils.SiteGuid());
-                rPost.Url = payData.ReturnUrl + "?key=" + paymentData.PaymentKey;
+                rPost.Url = payData.ReturnUrl + "?key=" + paymentData.PaymentKey + "&cmd=" + payData.ReturnCommand;
+
                 paymentData.Paid(true); // manual payment always true.
                 paymentData.Update("ManualPay");
                 //Build the re-direct html 

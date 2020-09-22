@@ -124,7 +124,7 @@
     <value>MaualPay Settings</value>
   </data>
   <data name="returnurl.Help" xml:space="preserve">
-    <value>This is the URL that the client will be returned to after payment.  Use the protocol and do NOT add parameters.</value>
+    <value>This is the URL that the client will be returned to after payment.  Use the protocol.</value>
   </data>
   <data name="returnurl.Text" xml:space="preserve">
     <value>Return URL</value>
@@ -143,5 +143,11 @@
   </data>
   <data name="returncommand.Text" xml:space="preserve">
     <value>Return Command</value>
+  </data>
+  <data name="validpayment.Help" xml:space="preserve">
+    <value>If checked the payment status will go to "Payment Accepted", if not checked the payment status will be "Waiting for Payment"</value>
+  </data>
+  <data name="validpayment.Text" xml:space="preserve">
+    <value>Valid Payment</value>
   </data>
 </root>

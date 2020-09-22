@@ -52,10 +52,19 @@
         <div class="w3-row">
             <div class="w3-twothird">
                 <label>@ResourceKey("provider.returncommand")</label>
-                @TextBox(info, "genxml/textbox/returncommand", "class='w3-input w3-border'  autocomplete='off'  ","rocketecommerce_cartbankreturn")
+                @TextBox(info, "genxml/textbox/returncommand", "class='w3-input w3-border'  autocomplete='off'  ", "rocketecommerce_cartbankreturn")
             </div>
             <div class="w3-third w3-padding">
                 @ResourceKey("provider.returncommand", "", "Help")
+            </div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-twothird">
+                <label>@ResourceKey("provider.validpayment")</label>
+                @CheckBox(info, "genxml/checkbox/validpayment", "", "class='w3-check'  ")
+            </div>
+            <div class="w3-third w3-padding">
+                @ResourceKey("provider.validpayment", "", "Help")
             </div>
         </div>
 
@@ -67,5 +76,9 @@
         <label>@ResourceKey("DNNrocket.active")</label>
         @CheckBox(info, "genxml/checkbox/active", "", "class='w3-check'")
 
+    </div>
+
+    <div class="w3-row w3-margin-top w3-small w3-right">
+        @ResourceKey("DNNrocket.lastupdated") : @GeneralUtils.FormatDateToString(info.ModifiedDate, DNNrocketUtils.GetCurrentCulture())
     </div>
 </div>

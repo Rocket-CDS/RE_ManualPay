@@ -25,17 +25,27 @@ namespace RocketEcommerce.RE_ManualPay
                 if (payData.ReturnUrl.Contains("?")) paramPrefix = "&";
                 rPost.Url = payData.ReturnUrl + paramPrefix + "key=" + paymentData.PaymentKey + "&cmd=" + payData.ReturnCommand;
 
-                if (payData.ValidPayment)
+                if (payData.PaymentFail && payData.DebugMode)
                 {
-                    paymentData.Paid(true);
+                    paymentData.PaymentFailed();
                 }
                 else
                 {
-                    paymentData.Paid(false);
-                    paymentData.Status = PaymentStatus.WaitingForPayment;
+                    if (payData.ValidPayment)
+                    {
+                        paymentData.Paid(true);
+                    }
+                    else
+                    {
+                        paymentData.Paid(false);
+                        paymentData.Status = PaymentStatus.WaitingForPayment;
+                    }
                 }
 
+
                 paymentData.Update("ManualPay");
+                LogUtils.LogTracking("ManualPay PaymentId: " + paymentData.PaymentId + "  Key:" + paymentData.PaymentKey + " Name:" + paymentData.Name, systemData.SystemKey);
+
                 //Build the re-direct html 
                 //We redirect so the architechture of the internal payment provider matches external payment methods.
                 return rPost.GetPostHtml();

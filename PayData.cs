@@ -66,6 +66,11 @@ namespace RocketEcommerce.RE_ManualPay
             get { return Info.GetXmlPropertyBool("genxml/checkbox/validpayment"); }
             set { Info.SetXmlProperty("genxml/checkbox/validpayment", value.ToString()); }
         }
+        public bool PaymentFail
+        {
+            get { return Info.GetXmlPropertyBool("genxml/checkbox/paymentfail"); }
+            set { Info.SetXmlProperty("genxml/checkbox/paymentfail", value.ToString()); }
+        }
 
 
         public PortalShopLimpet PortalShop { get; set; }

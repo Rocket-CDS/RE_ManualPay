@@ -10,7 +10,7 @@ namespace RocketEcommerce.RE_ManualPay
     {
         private SimplisityInfo _postInfo;
         private SimplisityInfo _paramInfo;
-        private CommandSecurity _commandSecurity;
+        private SecurityLimet _securityData;
         private RocketInterface _rocketInterface;
         private string _currentLang;
         private Dictionary<string, string> _passSettings;
@@ -32,31 +32,29 @@ namespace RocketEcommerce.RE_ManualPay
             _currentLang = langRequired;
             if (_currentLang == "") _currentLang = DNNrocketUtils.GetCurrentCulture();
 
-            _commandSecurity = new CommandSecurity(-1, -1, _rocketInterface);
-            _commandSecurity.AddCommand("manualpay_edit", true);
-            _commandSecurity.AddCommand("manualpay_save", true);
-            _commandSecurity.AddCommand("manualpay_delete", true);
+            _securityData = new SecurityLimet(PortalUtils.GetCurrentPortalId(), _systemData.SystemKey, _rocketInterface, -1, -1);
+            _securityData.AddCommand("manualpay_edit", true);
+            _securityData.AddCommand("manualpay_save", true);
+            _securityData.AddCommand("manualpay_delete", true);
 
-            if (!_commandSecurity.HasSecurityAccess(paramCmd))
+            paramCmd = _securityData.HasSecurityAccess(paramCmd, "manualpay_login");
+
+            switch (paramCmd)
             {
-                strOut = UserUtils.LoginForm(systemInfo, postInfo, _rocketInterface.InterfaceKey, UserUtils.GetCurrentUserId());
-            }
-            else
-            {
-                switch (paramCmd)
-                {
-                    case "manualpay_edit":
-                        strOut = EditData();
-                        break;
-                    case "manualpay_save":
-                        SaveData();
-                        strOut = EditData();
-                        break;
-                    case "manualpay_delete":
-                        DeleteData();
-                        strOut = EditData();
-                        break;
-                }
+                case "manualpay_login":
+                    strOut = UserUtils.LoginForm(systemInfo, postInfo, _rocketInterface.InterfaceKey, UserUtils.GetCurrentUserId());
+                    break;
+                case "manualpay_edit":
+                    strOut = EditData();
+                    break;
+                case "manualpay_save":
+                    SaveData();
+                    strOut = EditData();
+                    break;
+                case "manualpay_delete":
+                    DeleteData();
+                    strOut = EditData();
+                    break;
             }
 
             if (!rtnDic.ContainsKey("outputjson")) rtnDic.Add("outputhtml", strOut);

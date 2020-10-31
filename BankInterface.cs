@@ -24,25 +24,7 @@ namespace RocketEcommerce.RE_ManualPay
                 var paramPrefix = "?";
                 if (payData.ReturnUrl.Contains("?")) paramPrefix = "&";
                 rPost.Url = payData.ReturnUrl + paramPrefix + "key=" + paymentData.PaymentKey + "&cmd=" + payData.ReturnCommand;
-
-                if (payData.PaymentFail && payData.DebugMode)
-                {
-                    paymentData.PaymentFailed();
-                }
-                else
-                {
-                    if (payData.ValidPayment)
-                    {
-                        paymentData.Paid(true);
-                    }
-                    else
-                    {
-                        paymentData.Paid(false);
-                        paymentData.Status = PaymentStatus.WaitingForPayment;
-                    }
-                }
-
-
+                paymentData.BankAction = PaymentAction.BankPost;  // flag it is action. (payment made by "ReturnEvent") 
                 paymentData.Update("ManualPay");
                 LogUtils.LogTracking("ManualPay PaymentId: " + paymentData.PaymentId + "  Key:" + paymentData.PaymentKey + " Name:" + paymentData.Name, systemData.SystemKey);
 
@@ -59,9 +41,36 @@ namespace RocketEcommerce.RE_ManualPay
         }
         public override void ReturnEvent(RemoteLimpet remoteParam)
         {
-            // NOT REQUIRED
+            try
+            {
+                var paymentKey = remoteParam.GetUrlParam("key");
+                PaymentLimpet paymentData = new PaymentLimpet(PortalUtils.GetPortalId(), paymentKey);
+                if (paymentData.Exists)
+                {
+                    var payData = new PayData(PortalUtils.SiteGuid());
+                    if (payData.PaymentFail && payData.DebugMode)
+                    {
+                        paymentData.PaymentFailed();
+                    }
+                    else
+                    {
+                        if (payData.ValidPayment)
+                        {
+                            paymentData.Paid(true);
+                        }
+                        else
+                        {
+                            paymentData.Paid(false);
+                            paymentData.Status = PaymentStatus.WaitingForPayment;
+                        }
+                    }
+                }
+            }
+            catch (Exception exc) //Module failed to load
+            {
+                LogUtils.LogException(exc);
+            }
         }
-
 
         public override bool Active()
         {

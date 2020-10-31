@@ -24,15 +24,8 @@ namespace RocketEcommerce.RE_ManualPay
             sipsHtml += "<html><head>";
             sipsHtml += "<link rel='stylesheet' href='/DesktopModules/DNNrocket/css/w3.css'>";
             sipsHtml += "<link rel='stylesheet' href='/DesktopModules/DNNrocket/fa/css/all.min.css'>";
-            sipsHtml += "</head><body onload=\"document." + FormName + ".submit()\">";
-            sipsHtml += "<form id=\"postform\" name=\"" + FormName + "\" method=\"" + Method + "\" action=\"" + Url + "\">";
-            int i = 0;
-            for (i = 0; i <= Inputs.Keys.Count - 1; i += 1)
-            {
-                sipsHtml += "<input type=\"hidden\" name=\"" + Inputs.Keys[i] + "\" value=\"" + Inputs[Inputs.Keys[i]] + "\" />";
-            }
-            sipsHtml += "</form>";
-
+            //sipsHtml += "</head><body onload=\"document." + FormName + ".submit()\">";
+            sipsHtml += "</head><body>";
             sipsHtml += "  <table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" height=\"100%\">";
             sipsHtml += "<tr><td width=\"100%\" height=\"100%\" valign=\"middle\" align=\"center\">";
             sipsHtml += "<font style=\"font-family: Trebuchet MS, Verdana, Helvetica;font-size: 14px;letter-spacing: 1px;font-weight: bold;\">";
@@ -43,7 +36,7 @@ namespace RocketEcommerce.RE_ManualPay
 
             sipsHtml += "<script>";
             sipsHtml += "$(document).ready(function () {";
-            sipsHtml += "document.getElementById('postform').submit(); ";
+            sipsHtml += "window.location.replace('" + Url + "');; ";
             sipsHtml += "});";
             sipsHtml += "</script>";
 

@@ -40,32 +40,36 @@
 
     <div class="w3-container">
 
-        <div class="w3-row">
-            <div class="w3-twothird">
-                <label>@ResourceKey("provider.returnurl")</label>
-                @TextBox(info, "genxml/textbox/returnurl", "class='w3-input w3-border'  autocomplete='off'  ")
-            </div>
-            <div class="w3-third w3-padding">
-                @ResourceKey("provider.returnurl", "", "Help")
-            </div>
-        </div>
-        <div class="w3-row">
-            <div class="w3-twothird">
+        @{
+            var disableField = "";
+        }
+
+        @if (!UserUtils.IsAdministrator())
+        {
+            disableField = " disabled ";
+        }
+        <div class="w3-row w3-margin-top">
+            <div class="w3-third">
                 <label>@ResourceKey("provider.returncommand")</label>
-                @TextBox(info, "genxml/textbox/returncommand", "class='w3-input w3-border'  autocomplete='off'  ", "rocketecommerce_cartbankreturn")
-            </div>
-            <div class="w3-third w3-padding">
-                @ResourceKey("provider.returncommand", "", "Help")
+                @TextBox(info, "genxml/textbox/returncommand", "class='w3-input w3-border'  autocomplete='off'  " + disableField, "rocketecommerce_cartbankreturn")
             </div>
         </div>
         <div class="w3-row">
-            <div class="w3-twothird">
+            <i>
+                @ResourceKey("provider.returncommand", "", "Help")
+            </i>
+        </div>
+
+        <div class="w3-row w3-margin-top">
+            <div class="w3-third">
                 <label>@ResourceKey("provider.validpayment")</label>
                 @CheckBox(info, "genxml/checkbox/validpayment", "", "class='w3-check'  ")
             </div>
-            <div class="w3-third w3-padding">
+        </div>
+        <div class="w3-row">
+            <i>
                 @ResourceKey("provider.validpayment", "", "Help")
-            </div>
+            </i>
         </div>
 
         <hr />
@@ -76,9 +80,13 @@
         <label>@ResourceKey("DNNrocket.active")</label>
         @CheckBox(info, "genxml/checkbox/active", "", "class='w3-check'")
 
-        <div class="w3-panel w3-red">
-            <p>Return Payment Fail&nbsp;@CheckBox(info, "genxml/checkbox/paymentfail", "", "class='w3-check'") &nbsp;(For Testing, DebugMode must be also turned on)</p>
-        </div>
+        @if (UserUtils.IsAdministrator())
+        {
+            <div class="w3-panel w3-red">
+                <p>Return Payment Fail&nbsp;@CheckBox(info, "genxml/checkbox/paymentfail", "", "class='w3-check'") &nbsp;(For Testing, DebugMode must be also turned on)</p>
+            </div>
+        }
+
     </div>
 
     <div class="w3-row w3-margin-top w3-small w3-right">

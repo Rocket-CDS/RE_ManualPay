@@ -61,7 +61,7 @@ namespace RocketEcommerce.RE_ManualPay
                         else
                         {
                             paymentData.Paid(false);
-                            paymentData.Status = PaymentStatus.WaitingForPayment;
+                            paymentData.ChangeStaus(PaymentStatus.WaitingForPayment);
                         }
                     }
                 }

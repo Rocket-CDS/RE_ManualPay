@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RE_ManualPay", "RE_ManualPay.csproj", "{922263EE-B1E8-411C-9280-CD23D0E48D03}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RocketEcommerce", "..\RocketEcommerce\RocketEcommerce.csproj", "{3712CDA2-16D0-4CB6-8012-7C8DACD0ABCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DNNrocketAPI", "..\..\DNNrocket\API\DNNrocketAPI.csproj", "{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simplisity", "..\..\DNNrocket\Simplisity\Simplisity.csproj", "{A0097AFB-F26C-4910-B6A2-DB5CD45725FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,15 @@ Global
 		{922263EE-B1E8-411C-9280-CD23D0E48D03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{922263EE-B1E8-411C-9280-CD23D0E48D03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{922263EE-B1E8-411C-9280-CD23D0E48D03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3712CDA2-16D0-4CB6-8012-7C8DACD0ABCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3712CDA2-16D0-4CB6-8012-7C8DACD0ABCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3712CDA2-16D0-4CB6-8012-7C8DACD0ABCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2200F6C3-7D4B-4CDF-908F-DCA37ADFB121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0097AFB-F26C-4910-B6A2-DB5CD45725FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0097AFB-F26C-4910-B6A2-DB5CD45725FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0097AFB-F26C-4910-B6A2-DB5CD45725FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

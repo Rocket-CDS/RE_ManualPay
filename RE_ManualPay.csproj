@@ -3,10 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>RocketEcommerce.RE_ManualPay</RootNamespace>
+    <Configurations>Debug;Release;Razor</Configurations>
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="C:\Nevoweb\Projects\Utils\DNNpackager\bin\netcoreapp3.1\DNNpackager.exe  $(ProjectDir) C:\Nevoweb\Websites\www.dnnrocket.com\Install\DesktopModules\DNNrocketModules\RE_ManualPay $(ProjectDir)$(OutDir) C:\Nevoweb\Websites\www.dnnrocket.com\Install\bin $(ConfigurationName)&#xD;&#xA;" />
+    <Exec Command="&#xD;&#xA;DNNpackager.exe $(ProjectDir) $(ProjectDir)$(OutDir) $(ConfigurationName)&#xD;&#xA;" />
   </Target>
 
   <ItemGroup>

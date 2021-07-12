@@ -1,0 +1,69 @@
+﻿<genxml>
+  <systemkey>rocketecommerce</systemkey>
+
+  <groupsdata list="true">
+  </groupsdata>
+
+  <provtypesdata list="true">
+  </provtypesdata>
+
+  <providerdata list="true">
+    <genxml>
+      <textbox>
+        <interfacekey>manualpay</interfacekey>
+        <namespaceclass>RocketEcommerce.RE_ManualPay.BankInterface</namespaceclass>
+        <assembly>RE_ManualPay</assembly>
+        <interfaceicon></interfaceicon>
+        <defaultcommand></defaultcommand>
+        <relpath>/DesktopModules/DNNrocketModules/RE_ManualPay</relpath>
+      </textbox>
+      <providertype>payment</providertype>
+      <dropdownlist>
+        <group></group>
+      </dropdownlist>
+      <checkbox>
+        <onmenu>false</onmenu>
+        <active>true</active>
+      </checkbox>
+      <radio>
+        <securityrolesadministrators>0</securityrolesadministrators>
+        <securityrolesmanager>0</securityrolesmanager>
+        <securityroleseditor>0</securityroleseditor>
+        <securityrolesclienteditor>0</securityrolesclienteditor>
+        <securityrolesregisteredusers>0</securityrolesregisteredusers>
+        <securityrolessubscribers>0</securityrolessubscribers>
+        <securityrolesall>0</securityrolesall>
+      </radio>
+    </genxml>
+  </providerdata>
+
+  <interfacedata list="true">
+    <genxml>
+      <textbox>
+        <interfacekey>manualpayui</interfacekey>
+        <namespaceclass>RocketEcommerce.RE_ManualPay.StartConnect</namespaceclass>
+        <assembly>RE_ManualPay</assembly>
+        <interfaceicon></interfaceicon>
+        <defaultcommand>manualpay_edit</defaultcommand>
+        <relpath>/DesktopModules/DNNrocketModules/RE_ManualPay</relpath>
+      </textbox>
+      <providertype>payment</providertype>
+      <dropdownlist>
+        <group></group>
+      </dropdownlist>
+      <checkbox>
+        <onmenu>false</onmenu>
+        <active>true</active>
+      </checkbox>
+      <radio>
+        <securityrolesadministrators>1</securityrolesadministrators>
+        <securityrolesmanager>1</securityrolesmanager>
+        <securityroleseditor>0</securityroleseditor>
+        <securityrolesclienteditor>0</securityrolesclienteditor>
+        <securityrolesregisteredusers>0</securityrolesregisteredusers>
+        <securityrolessubscribers>0</securityrolessubscribers>
+        <securityrolesall>0</securityrolesall>
+      </radio>
+    </genxml>
+  </interfacedata>
+</genxml>

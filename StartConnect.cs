@@ -15,7 +15,8 @@ namespace RocketEcommerce.RE_ManualPay
         private string _currentLang;
         private Dictionary<string, string> _passSettings;
         private SystemLimpet _systemData;
-
+        private const string _systemkey = "RE_ManualPay";
+        private AppThemeSystemLimpet _appThemeSystem;
         public override Dictionary<string, object> ProcessCommand(string paramCmd, SimplisityInfo systemInfo, SimplisityInfo interfaceInfo, SimplisityInfo postInfo, SimplisityInfo paramInfo, string langRequired = "")
         {
             var strOut = ""; // return ERROR if not matching commands.
@@ -23,8 +24,9 @@ namespace RocketEcommerce.RE_ManualPay
 
             paramCmd = paramCmd.ToLower();
 
-            _systemData = new SystemLimpet(systemInfo);
+            _systemData = new SystemLimpet(_systemkey);
             _rocketInterface = new RocketInterface(interfaceInfo);
+            _appThemeSystem = new AppThemeSystemLimpet(_systemkey);
 
             _postInfo = postInfo;
             _paramInfo = paramInfo;
@@ -42,7 +44,7 @@ namespace RocketEcommerce.RE_ManualPay
             switch (paramCmd)
             {
                 case "manualpay_login":
-                    strOut = UserUtils.LoginForm(systemInfo, postInfo, _rocketInterface.InterfaceKey, UserUtils.GetCurrentUserId());
+                    strOut = UserUtils.LoginForm(_systemkey, postInfo, _rocketInterface.InterfaceKey, UserUtils.GetCurrentUserId());
                     break;
                 case "manualpay_edit":
                     strOut = EditData();
@@ -64,8 +66,7 @@ namespace RocketEcommerce.RE_ManualPay
         public String EditData()
         {
             var payData = new PayData(PortalUtils.SiteGuid());
-
-            var razorTempl = RenderRazorUtils.GetRazorTemplateData(_rocketInterface.DefaultTemplate, _rocketInterface.TemplateRelPath, _rocketInterface.DefaultTheme, _currentLang, _rocketInterface.ThemeVersion, true);
+            var razorTempl = _appThemeSystem.GetTemplate("settings.cshtml");            
             var strOut = RenderRazorUtils.RazorDetail(razorTempl, payData.Info, _passSettings, new SessionParams(_paramInfo), true);
             return strOut;
         }

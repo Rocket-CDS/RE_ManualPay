@@ -40,7 +40,7 @@
   <interfacedata list="true">
     <genxml>
       <textbox>
-        <interfacekey>manualpayui</interfacekey>
+        <interfacekey>manualpay</interfacekey>
         <namespaceclass>RocketEcommerce.RE_ManualPay.StartConnect</namespaceclass>
         <assembly>RE_ManualPay</assembly>
         <interfaceicon></interfaceicon>

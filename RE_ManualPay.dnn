@@ -52,7 +52,7 @@
           <files>
             <basePath>DesktopModules\DNNrocketModules\RocketEcommerce\Plugins</basePath>
             <file>
-              <name>RE_ManualPay.rules</name>
+              <name>manualpay.rules</name>
               <sourceFileName>system.rules</sourceFileName>
             </file>
           </files>

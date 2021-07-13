@@ -50,13 +50,13 @@
 
         <component type="File">
           <files>
-            <basePath>DesktopModules\DNNrocket\API\Systems\</basePath>
+            <basePath>DesktopModules\DNNrocketModules\RocketEcommerce\Plugins</basePath>
             <file>
-              <name>RE_ManualPay_system.xml</name>
+              <name>RE_ManualPay.rules</name>
+              <sourceFileName>system.rules</sourceFileName>
             </file>
           </files>
         </component>
-
 
       </components>
 		</package>

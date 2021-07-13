@@ -15,8 +15,7 @@ namespace RocketEcommerce.RE_ManualPay
         private string _currentLang;
         private Dictionary<string, string> _passSettings;
         private SystemLimpet _systemData;
-        private const string _systemkey = "RE_ManualPay";
-        private AppThemeSystemLimpet _appThemeSystem;
+        private const string _systemkey = "rocketecommerce";
         public override Dictionary<string, object> ProcessCommand(string paramCmd, SimplisityInfo systemInfo, SimplisityInfo interfaceInfo, SimplisityInfo postInfo, SimplisityInfo paramInfo, string langRequired = "")
         {
             var strOut = ""; // return ERROR if not matching commands.
@@ -26,7 +25,6 @@ namespace RocketEcommerce.RE_ManualPay
 
             _systemData = new SystemLimpet(_systemkey);
             _rocketInterface = new RocketInterface(interfaceInfo);
-            _appThemeSystem = new AppThemeSystemLimpet(_systemkey);
 
             _postInfo = postInfo;
             _paramInfo = paramInfo;
@@ -66,7 +64,8 @@ namespace RocketEcommerce.RE_ManualPay
         public String EditData()
         {
             var payData = new PayData(PortalUtils.SiteGuid());
-            var razorTempl = _appThemeSystem.GetTemplate("settings.cshtml");            
+            var appThemeSystem = new AppThemeSystemLimpet("RE_ManualPay");
+            var razorTempl = appThemeSystem.GetTemplate("settings.cshtml");
             var strOut = RenderRazorUtils.RazorDetail(razorTempl, payData.Info, _passSettings, new SessionParams(_paramInfo), true);
             return strOut;
         }

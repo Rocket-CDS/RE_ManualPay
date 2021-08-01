@@ -14,7 +14,7 @@
         <namespaceclass>RocketEcommerce.RE_ManualPay.BankInterface</namespaceclass>
         <assembly>RE_ManualPay</assembly>
         <interfaceicon></interfaceicon>
-        <defaultcommand></defaultcommand>
+        <defaultcommand>manualpay_edit</defaultcommand>
         <relpath>/DesktopModules/DNNrocketModules/RE_ManualPay</relpath>
       </textbox>
       <providertype>payment</providertype>
@@ -26,8 +26,8 @@
         <active>true</active>
       </checkbox>
       <radio>
-        <securityrolesadministrators>0</securityrolesadministrators>
-        <securityrolesmanager>0</securityrolesmanager>
+        <securityrolesadministrators>1</securityrolesadministrators>
+        <securityrolesmanager>1</securityrolesmanager>
         <securityroleseditor>0</securityroleseditor>
         <securityrolesclienteditor>0</securityrolesclienteditor>
         <securityrolesregisteredusers>0</securityrolesregisteredusers>

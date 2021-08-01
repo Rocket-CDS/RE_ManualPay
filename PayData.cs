@@ -76,6 +76,22 @@ namespace RocketEcommerce.RE_ManualPay
         public PortalShopLimpet PortalShop { get; set; }
         public SimplisityInfo Info { get; set; }
 
+        public string PayButtonText
+        {
+            get
+            {
+                var rtn = Info.GetXmlProperty("genxml/lang/genxml/textbox/paybuttontext");
+                if (rtn == "") rtn = DNNrocketUtils.GetResourceString("/DesktopModules/DNNrocketModules/RE_ManualPay/App_LocalResources/", "provider.paycheque", "Text", "");
+                return rtn;
+            }
+            set { Info.SetXmlProperty("genxml/lang/genxml/textbox/paybuttontext", value); }
+        }
+        public string PayMsg
+        {
+            get { return Info.GetXmlProperty("genxml/lang/genxml/textbox/paymsg"); }
+            set { Info.SetXmlProperty("genxml/lang/genxml/textbox/paymsg", value); }
+        }
+        public string PaymentKey { get { return "manualpay"; } }
 
     }
 }

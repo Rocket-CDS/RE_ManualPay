@@ -150,4 +150,13 @@
   <data name="validpayment.Text" xml:space="preserve">
     <value>Valid Payment</value>
   </data>
+  <data name="paycheque.Text" xml:space="preserve">
+    <value>Pay by Cheque or Bank Transfer</value>
+  </data>
+  <data name="paybuttontext.Text" xml:space="preserve">
+    <value>Button Text (html)</value>
+  </data>
+  <data name="paymsg.Text" xml:space="preserve">
+    <value>Pay Message (html)</value>
+  </data>
 </root>

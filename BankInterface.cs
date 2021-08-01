@@ -83,5 +83,23 @@ namespace RocketEcommerce.RE_ManualPay
             }
             return false;
         }
+        public override string PayButtonText()
+        {
+            var portalShop = new PortalShopLimpet(PortalUtils.GetCurrentPortalId(), DNNrocketUtils.GetCurrentCulture());
+            var payData = new PayData(portalShop.SiteKey);
+            return payData.PayButtonText;
+        }
+
+        public override string PayMsg()
+        {
+            var portalShop = new PortalShopLimpet(PortalUtils.GetCurrentPortalId(), DNNrocketUtils.GetCurrentCulture());
+            var payData = new PayData(portalShop.SiteKey);
+            return payData.PayMsg;
+        }
+
+        public override string PaymentProvKey()
+        {
+            return "manualpay";
+        }
     }
 }

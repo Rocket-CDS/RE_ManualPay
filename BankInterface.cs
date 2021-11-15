@@ -34,16 +34,18 @@ namespace RocketEcommerce.RE_ManualPay
             }
             return "";
         }
-        public override string NotifyEvent(SessionParams sessionParams)
+        public override string NotifyEvent(SimplisityInfo paramInfo)
         {
             // NOT REQUIRED
             return "NOT REQUIRED";
         }
-        public override void ReturnEvent(SessionParams sessionParams)
+        public override void ReturnEvent(SimplisityInfo paramInfo)
         {
             try
             {
-                var paymentKey = sessionParams.Get("key");
+                var paymentKey = paramInfo.GetXmlProperty("genxml/remote/urlparams/key");
+                if (paymentKey == "") paymentKey = paramInfo.GetXmlProperty("genxml/urlparams/key");
+                if (paymentKey == "") paymentKey = paramInfo.GetXmlProperty("genxml/hidden/key");
                 PaymentLimpet paymentData = new PaymentLimpet(PortalUtils.GetPortalId(), paymentKey);
                 if (paymentData.Exists)
                 {

@@ -66,8 +66,9 @@ namespace RocketEcommerce.RE_ManualPay
             var payData = new PayData(PortalUtils.SiteGuid());
             var appThemeSystem = new AppThemeSystemLimpet("RE_ManualPay");
             var razorTempl = appThemeSystem.GetTemplate("settings.cshtml");
-            var strOut = RenderRazorUtils.RazorDetail(razorTempl, payData.Info, _passSettings, new SessionParams(_paramInfo), true);
-            return strOut;
+            var pr = RenderRazorUtils.RazorProcessData(razorTempl, payData.Info, null, _passSettings, new SessionParams(_paramInfo), true);
+            if (pr.StatusCode != "00") return pr.ErrorMsg;
+            return pr.RenderedText;
         }
         public void SaveData()
         {

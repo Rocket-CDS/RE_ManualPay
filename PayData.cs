@@ -81,7 +81,7 @@ namespace RocketEcommerce.RE_ManualPay
             get
             {
                 var rtn = Info.GetXmlProperty("genxml/lang/genxml/textbox/paybuttontext");
-                if (rtn == "") rtn = DNNrocketUtils.GetResourceString("/DesktopModules/DNNrocketModules/RE_ManualPay/App_LocalResources/", "provider.paycheque", "Text", "");
+                if (rtn == "") rtn = DNNrocketUtils.GetResourceString("/DesktopModules/DNNrocketModules/RE_ManualPay/App_LocalResources/", "provider.paybutton", "Text", "");
                 return rtn;
             }
             set { Info.SetXmlProperty("genxml/lang/genxml/textbox/paybuttontext", value); }

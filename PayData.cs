@@ -15,20 +15,19 @@ namespace RocketEcommerce.RE_ManualPay
         private const string _systemKey = "rocketecommerce";
         private string _guidKey;
         private DNNrocketController _objCtrl;
-        public PayData(string siteGuid)
+        public PayData(int portalId, string cultureCode)
         {
-            var portalid = PortalUtils.GetPortalIdBySiteKey(siteGuid);
-            PortalShop = new PortalShopLimpet(portalid, DNNrocketUtils.GetCurrentCulture());
-            _guidKey = siteGuid + "_" + _systemKey + "_" + _entityTypeCode;
+            PortalShop = new PortalShopLimpet(portalId, cultureCode);
+            _guidKey = portalId + "_" + _systemKey + "_" + _entityTypeCode;
             _objCtrl = new DNNrocketController();
-            Info = _objCtrl.GetData(_guidKey, _entityTypeCode, DNNrocketUtils.GetCurrentCulture(), -1, true, _tableName);
+            Info = _objCtrl.GetData(_guidKey, _entityTypeCode, cultureCode, -1, true, _tableName);
             if (Info == null)
             {
-                var portalId = PortalUtils.GetPortalIdBySiteKey(siteGuid);
                 Info = new SimplisityInfo();
                 Info.TypeCode = _entityTypeCode;
                 Info.GUIDKey = _guidKey;
                 Info.PortalId = portalId;
+                Info.Lang = cultureCode;
             }
         }
         public void Save(SimplisityInfo postInfo)

@@ -7,7 +7,6 @@
 @{
     var info = (SimplisityInfo)Model.List.First();
     var engineurl = PortalUtils.GetPortalAlias(DNNrocketUtils.GetCurrentCulture(), PortalUtils.GetPortalId());
-    var payData = new PayData(PortalUtils.SiteGuid());
 }
 
 
@@ -31,7 +30,7 @@
 <div id="datasave" class="w3-margin-top">
 
     <div class="w3-container ">
-        <h2><i class="fab fa-money fa-x3"></i>&nbsp;@ResourceKey("provider.settings")</h2>
+        <h2>@ResourceKey("provider.settings")</h2>
     </div>
 
     <div class="w3-container">
@@ -77,15 +76,15 @@
 
         <div class="w3-row">
             <div class="w3-twothird">
-                <label>@ResourceKey("provider.paybuttontext")</label>
-                @TextArea(info, "genxml/lang/genxml/textbox/paybuttontext", "class='form-control w3-input w3-border'  autocomplete='off'", ResourceKey("provider.paybutton").ToString())
+                <label>@ResourceKey("provider.paybuttontext")&nbsp;@EditFlag(Model.SessionParamsData)</label>
+                @TextArea(info, "genxml/lang/genxml/textbox/paybuttontext", "class='form-control w3-input w3-border'  autocomplete='off'", ResourceKey("provider.paybutton").ToString(), true)
             </div>
         </div>
 
         <div class="w3-row">
             <div class="w3-twothird">
-                <label>@ResourceKey("provider.paymsg")</label>
-                @TextArea(info, "genxml/lang/genxml/textbox/paymsg", "class='form-control w3-input w3-border'  autocomplete='off'", ResourceKey("provider.paybuttonmsg").ToString())
+                <label>@ResourceKey("provider.paymsg")&nbsp;@EditFlag(Model.SessionParamsData)</label>
+                @TextArea(info, "genxml/lang/genxml/textbox/paymsg", "class='form-control w3-input w3-border'  autocomplete='off'", ResourceKey("provider.paybuttonmsg").ToString(), true)
             </div>
         </div>
 

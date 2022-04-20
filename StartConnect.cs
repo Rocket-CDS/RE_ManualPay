@@ -16,6 +16,8 @@ namespace RocketEcommerce.RE_ManualPay
         private Dictionary<string, string> _passSettings;
         private SystemLimpet _systemData;
         private const string _systemkey = "rocketecommerce";
+        private SessionParams _sessionParams;
+
         public override Dictionary<string, object> ProcessCommand(string paramCmd, SimplisityInfo systemInfo, SimplisityInfo interfaceInfo, SimplisityInfo postInfo, SimplisityInfo paramInfo, string langRequired = "")
         {
             var strOut = ""; // return ERROR if not matching commands.
@@ -28,9 +30,7 @@ namespace RocketEcommerce.RE_ManualPay
 
             _postInfo = postInfo;
             _paramInfo = paramInfo;
-
-            _currentLang = langRequired;
-            if (_currentLang == "") _currentLang = DNNrocketUtils.GetCurrentCulture();
+            _sessionParams = new SessionParams(_paramInfo);
 
             _securityData = new SecurityLimpet(PortalUtils.GetCurrentPortalId(), _systemData.SystemKey, _rocketInterface, -1, -1);
             _securityData.AddCommand("manualpay_edit", true);
@@ -63,7 +63,7 @@ namespace RocketEcommerce.RE_ManualPay
 
         public String EditData()
         {
-            var payData = new PayData(PortalUtils.SiteGuid());
+            var payData = GetPayData();
             var appThemeSystem = new AppThemeSystemLimpet("RE_ManualPay");
             var razorTempl = appThemeSystem.GetTemplate("settings.cshtml");
             var pr = RenderRazorUtils.RazorProcessData(razorTempl, payData.Info, null, _passSettings, new SessionParams(_paramInfo), true);
@@ -72,15 +72,18 @@ namespace RocketEcommerce.RE_ManualPay
         }
         public void SaveData()
         {
-            var payData = new PayData(PortalUtils.SiteGuid());
+            var payData = GetPayData();
             payData.Save(_postInfo);
         }
         public void DeleteData()
         {
-            var payData = new PayData(PortalUtils.SiteGuid());
+            var payData = GetPayData();
             payData.Delete();
         }
-
+        public PayData GetPayData()
+        {
+            return new PayData(PortalUtils.GetCurrentPortalId(), _sessionParams.CultureCodeEdit);
+        }
 
 
     }

@@ -20,7 +20,7 @@ namespace RocketEcommerce.RE_ManualPay
             if (rocketInterface != null)
             {
                 var rPost = new RemotePost();
-                var payData = new PayData(PortalUtils.SiteGuid());
+                var payData = new PayData(PortalUtils.GetCurrentPortalId(), DNNrocketUtils.GetCurrentCulture());
                 var paramPrefix = "?";
                 if (payData.ReturnUrl.Contains("?")) paramPrefix = "&";
                 rPost.Url = payData.ReturnUrl + paramPrefix + "key=" + paymentData.PaymentKey + "&cmd=" + payData.ReturnCommand;
@@ -49,7 +49,7 @@ namespace RocketEcommerce.RE_ManualPay
                 PaymentLimpet paymentData = new PaymentLimpet(PortalUtils.GetPortalId(), paymentKey);
                 if (paymentData.Exists)
                 {
-                    var payData = new PayData(PortalUtils.SiteGuid());
+                    var payData = new PayData(PortalUtils.GetCurrentPortalId(), DNNrocketUtils.GetCurrentCulture());
                     if (payData.PaymentFail && payData.DebugMode)
                     {
                         paymentData.PaymentFailed();
@@ -80,7 +80,7 @@ namespace RocketEcommerce.RE_ManualPay
             var rocketInterface = systemData.GetInterface("manualpay");
             if (rocketInterface != null)
             {
-                var payData = new PayData(PortalUtils.SiteGuid());
+                var payData = new PayData(PortalUtils.GetCurrentPortalId(), DNNrocketUtils.GetCurrentCulture());
                 return payData.Active;
             }
             return false;
@@ -88,14 +88,14 @@ namespace RocketEcommerce.RE_ManualPay
         public override string PayButtonText()
         {
             var portalShop = new PortalShopLimpet(PortalUtils.GetCurrentPortalId(), DNNrocketUtils.GetCurrentCulture());
-            var payData = new PayData(portalShop.SiteKey);
+            var payData = new PayData(PortalUtils.GetCurrentPortalId(), DNNrocketUtils.GetCurrentCulture());
             return payData.PayButtonText;
         }
 
         public override string PayMsg()
         {
             var portalShop = new PortalShopLimpet(PortalUtils.GetCurrentPortalId(), DNNrocketUtils.GetCurrentCulture());
-            var payData = new PayData(portalShop.SiteKey);
+            var payData = new PayData(PortalUtils.GetCurrentPortalId(), DNNrocketUtils.GetCurrentCulture());
             return payData.PayMsg;
         }
 

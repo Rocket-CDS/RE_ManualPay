@@ -19,12 +19,7 @@
 <div class="w3-row w3-padding">
     <div class="w3-button" onclick="window.location.reload(false);">@ButtonIcon(ButtonTypes.back)</div>
     <div class="w3-button w3-theme-action simplisity_click " s-cmd="manualpay_save" s-post="#datasave" s-fields=''>@ButtonText(ButtonTypes.save)</div>
-    @if (Model.GetSettingBool("saved"))
-    {
-        <span class="simplisity_fadeout">
-            @ButtonIcon(ButtonTypes.save)
-        </span>
-    }
+    <div class="w3-button w3-red w3-right simplisity_confirmclick " s-confirm="@ResourceKey("DNNrocket.delete") ?" s-cmd="manualpay_delete" s-post="#datasave" s-fields=''>@ButtonText(ButtonTypes.delete)</div>
 </div>
 
 <div id="datasave" class="w3-margin-top">

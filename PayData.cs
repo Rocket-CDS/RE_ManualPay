@@ -29,6 +29,7 @@ namespace RocketEcommerce.RE_ManualPay
                 Info.PortalId = portalId;
                 Info.Lang = cultureCode;
             }
+            if (Info.Lang == "") Info.Lang = cultureCode; // incase we have a missing language record.
         }
         public void Save(SimplisityInfo postInfo)
         {
@@ -38,7 +39,7 @@ namespace RocketEcommerce.RE_ManualPay
         }
         public void Delete()
         {
-            if (Info.ItemID > 0) _objCtrl.Delete(Info.ItemID);
+            if (Info.ItemID > 0) _objCtrl.Delete(Info.ItemID, _tableName);
         }
         public string ReturnUrl
         {

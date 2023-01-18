@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>RocketEcommerce.RE_ManualPay</RootNamespace>
+    <RootNamespace>RocketEcommerceAPI.RE_ManualPay</RootNamespace>
     <Configurations>Debug;Release;Razor</Configurations>
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <FileVersion>1.0.1.0</FileVersion>
@@ -16,7 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\DNNrocket\API\DNNrocketAPI.csproj" />
     <ProjectReference Include="..\..\DNNrocket\Simplisity\Simplisity.csproj" />
-    <ProjectReference Include="..\RocketEcommerce\RocketEcommerce.csproj" />
+    <ProjectReference Include="..\RocketEcommerceAPI\RocketEcommerceAPI.csproj" />
   </ItemGroup>
 
 </Project>

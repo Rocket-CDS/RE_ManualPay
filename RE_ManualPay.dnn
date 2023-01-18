@@ -50,7 +50,7 @@
 
         <component type="File">
           <files>
-            <basePath>DesktopModules\DNNrocketModules\RocketEcommerce\Plugins\RE_ManualPay</basePath>
+            <basePath>DesktopModules\DNNrocketModules\RocketEcommerceAPI\Plugins\RE_ManualPay</basePath>
             <file>
               <name>manualpay.rules</name>
               <sourceFileName>system.rules</sourceFileName>

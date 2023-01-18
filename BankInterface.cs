@@ -4,18 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using RocketEcommerce;
+using RocketEcommerceAPI;
 using DNNrocketAPI.Components;
-using RocketEcommerce.Interfaces;
-using RocketEcommerce.Components;
+using RocketEcommerceAPI.Interfaces;
+using RocketEcommerceAPI.Components;
 
-namespace RocketEcommerce.RE_ManualPay
+namespace RocketEcommerceAPI.RE_ManualPay
 {
     public class BankInterface : PaymentInterface
     {
         public override string GetBankRemotePost(PaymentLimpet paymentData)
         {
-            var systemData = new SystemLimpet("rocketecommerce");
+            var systemData = new SystemLimpet("rocketecommerceapi");
             var rocketInterface = systemData.GetInterface(paymentData.PaymentProvider);
             if (rocketInterface != null)
             {
@@ -76,7 +76,7 @@ namespace RocketEcommerce.RE_ManualPay
 
         public override bool Active()
         {
-            var systemData = new SystemLimpet("rocketecommerce");
+            var systemData = new SystemLimpet("rocketecommerceapi");
             var rocketInterface = systemData.GetInterface("manualpay");
             if (rocketInterface != null)
             {

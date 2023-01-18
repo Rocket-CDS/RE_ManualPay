@@ -1,5 +1,5 @@
 ﻿<genxml>
-  <systemkey>rocketecommerce</systemkey>
+  <systemkey>rocketecommerceapi</systemkey>
 
   <groupsdata list="true">
   </groupsdata>
@@ -11,7 +11,7 @@
     <genxml>
       <textbox>
         <interfacekey>manualpay</interfacekey>
-        <namespaceclass>RocketEcommerce.RE_ManualPay.BankInterface</namespaceclass>
+        <namespaceclass>RocketEcommerceAPI.RE_ManualPay.BankInterface</namespaceclass>
         <assembly>RE_ManualPay</assembly>
         <interfaceicon></interfaceicon>
         <defaultcommand>manualpay_edit</defaultcommand>
@@ -41,7 +41,7 @@
     <genxml>
       <textbox>
         <interfacekey>manualpay</interfacekey>
-        <namespaceclass>RocketEcommerce.RE_ManualPay.StartConnect</namespaceclass>
+        <namespaceclass>RocketEcommerceAPI.RE_ManualPay.StartConnect</namespaceclass>
         <assembly>RE_ManualPay</assembly>
         <interfaceicon></interfaceicon>
         <defaultcommand>manualpay_edit</defaultcommand>

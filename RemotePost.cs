@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace RocketEcommerce.RE_ManualPay
+namespace RocketEcommerceAPI.RE_ManualPay
 {
     public class RemotePost
     {

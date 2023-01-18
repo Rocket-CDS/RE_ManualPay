@@ -2,7 +2,7 @@
 @using System.Linq
 @using Simplisity;
 @using DNNrocketAPI.Components;
-@using RocketEcommerce.RE_ManualPay;
+@using RocketEcommerceAPI.RE_ManualPay;
 
 @{
     var info = (SimplisityInfo)Model.List.First();
@@ -11,15 +11,15 @@
 
 
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocket/API/App_LocalResources/")
-@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketEcommerce/App_LocalResources/")
+@AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RocketEcommerceAPI/App_LocalResources/")
 @AddProcessData("resourcepath", "/DesktopModules/DNNrocketModules/RE_ManualPay/App_LocalResources/")
 
-@RenderLanguageSelector("manualpay_edit", "", "rocketecommerce", Model)
+@RenderLanguageSelector("manualpay_edit", "", "rocketecommerceapi", Model)
 
 <div class="w3-row w3-padding w3-margin-top">
-    <div class="w3-button simplisity_click" s-cmd="paymentmethods_list" s-fields='{"systemkey":"rocketecommerce"}'>@ButtonIcon(ButtonTypes.back)</div>
-    <div class="w3-button w3-theme-action simplisity_click " s-cmd="manualpay_save" s-post="#datasave" s-fields='{"systemkey":"rocketecommerce"}'>@ButtonText(ButtonTypes.save)</div>
-    <div class="w3-button w3-red w3-right simplisity_confirmclick " s-confirm="@ResourceKey("DNNrocket.delete") ?" s-cmd="manualpay_delete" s-post="#datasave" s-fields='{"systemkey":"rocketecommerce"}'>@ButtonText(ButtonTypes.delete)</div>
+    <div class="w3-button simplisity_click" s-cmd="paymentmethods_list" s-fields='{"systemkey":"rocketecommerceapi"}'>@ButtonIcon(ButtonTypes.back)</div>
+    <div class="w3-button w3-theme-action simplisity_click " s-cmd="manualpay_save" s-post="#datasave" s-fields='{"systemkey":"rocketecommerceapi"}'>@ButtonText(ButtonTypes.save)</div>
+    <div class="w3-button w3-red w3-right simplisity_confirmclick " s-confirm="@ResourceKey("DNNrocket.delete") ?" s-cmd="manualpay_delete" s-post="#datasave" s-fields='{"systemkey":"rocketecommerceapi"}'>@ButtonText(ButtonTypes.delete)</div>
 </div>
 
 <div id="datasave" class="w3-margin-top">
@@ -32,7 +32,7 @@
         <label>Assembly</label>
         @TextBox(info, "genxml/textbox/assembly", "class='w3-input w3-border'  autocomplete='off' disabled ", "RE_ManualPay")
         <label>Namespace + Class</label>
-        @TextBox(info, "genxml/textbox/namespaceclass", "class='w3-input w3-border'  autocomplete='off' disabled ", "RocketEcommerce.RE_ManualPay.BankInterface")
+        @TextBox(info, "genxml/textbox/namespaceclass", "class='w3-input w3-border'  autocomplete='off' disabled ", "RocketEcommerceAPI.RE_ManualPay.BankInterface")
     </div>
 
     <div class="w3-container">

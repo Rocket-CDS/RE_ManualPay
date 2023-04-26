@@ -1,7 +1,7 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
     
-		<package name="RE_ManualPay" type="Library" version="1.0.1">
+		<package name="RE_ManualPay" type="Library" version="1.0.2">
 			<friendlyName>RE_ManualPay</friendlyName>
 			<description>RE_ManualPay</description>
       <iconFile></iconFile>

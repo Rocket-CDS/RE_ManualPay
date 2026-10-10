@@ -77,7 +77,7 @@ namespace RocketEcommerceAPI.RE_ManualPay
         public override bool Active()
         {
             var systemData = new SystemLimpet("rocketecommerceapi");
-            var rocketInterface = systemData.GetInterface("manualpay");
+            var rocketInterface = systemData.GetProvider("manualpay");
             if (rocketInterface != null)
             {
                 var payData = new PayData(PortalUtils.GetCurrentPortalId(), DNNrocketUtils.GetCurrentCulture());

@@ -34,25 +34,25 @@ namespace RocketEcommerceAPI.RE_ManualPay
             _sessionParams = new SessionParams(_paramInfo);
 
             _securityData = new SecurityLimpet(PortalUtils.GetCurrentPortalId(), _systemData.SystemKey, _rocketInterface, -1, -1);
-            _securityData.AddCommand("manualpay_edit", true);
-            _securityData.AddCommand("manualpay_save", true);
-            _securityData.AddCommand("manualpay_delete", true);
+            _securityData.AddCommand("manualpayui_edit", true);
+            _securityData.AddCommand("manualpayui_save", true);
+            _securityData.AddCommand("manualpayui_delete", true);
 
-            paramCmd = _securityData.HasSecurityAccess(paramCmd, "manualpay_login");
+            paramCmd = _securityData.HasSecurityAccess(paramCmd, "manualpayui_login");
 
             switch (paramCmd)
             {
-                case "manualpay_login":
+                case "manualpayui_login":
                     strOut = UserUtils.LoginForm(_systemkey, postInfo, _rocketInterface.InterfaceKey, UserUtils.GetCurrentUserId());
                     break;
-                case "manualpay_edit":
+                case "manualpayui_edit":
                     strOut = EditData();
                     break;
-                case "manualpay_save":
+                case "manualpayui_save":
                     SaveData();
                     strOut = EditData();
                     break;
-                case "manualpay_delete":
+                case "manualpayui_delete":
                     DeleteData();
                     strOut = EditData();
                     break;

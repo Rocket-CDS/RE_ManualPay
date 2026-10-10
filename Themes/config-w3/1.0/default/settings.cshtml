@@ -1,4 +1,4 @@
-@inherits DNNrocketAPI.render.DNNrocketTokens<Simplisity.SimplisityRazor>
+﻿@inherits DNNrocketAPI.render.DNNrocketTokens<Simplisity.SimplisityRazor>
 @using System.Linq
 @using Simplisity;
 @using DNNrocketAPI.Components;
@@ -18,8 +18,8 @@
 
 <div class="w3-row w3-padding w3-margin-top">
     <div class="w3-button simplisity_click" s-cmd="paymentmethods_list" s-fields='{"systemkey":"rocketecommerceapi"}'>@ButtonIcon(ButtonTypes.back)</div>
-    <div class="w3-button w3-theme-action simplisity_click " s-cmd="manualpay_save" s-post="#datasave" s-fields='{"systemkey":"rocketecommerceapi"}'>@ButtonText(ButtonTypes.save)</div>
-    <div class="w3-button w3-red w3-right simplisity_confirmclick " s-confirm="@ResourceKey("DNNrocket.delete") ?" s-cmd="manualpay_delete" s-post="#datasave" s-fields='{"systemkey":"rocketecommerceapi"}'>@ButtonText(ButtonTypes.delete)</div>
+    <div class="w3-button w3-theme-action simplisity_click " s-cmd="manualpayui_save" s-post="#datasave" s-fields='{"systemkey":"rocketecommerceapi"}'>@ButtonText(ButtonTypes.save)</div>
+    <div class="w3-button w3-red w3-right simplisity_confirmclick " s-confirm="@ResourceKey("DNNrocket.delete") ?" s-cmd="manualpayui_delete" s-post="#datasave" s-fields='{"systemkey":"rocketecommerceapi"}'>@ButtonText(ButtonTypes.delete)</div>
 </div>
 
 <div id="datasave" class="w3-margin-top">
